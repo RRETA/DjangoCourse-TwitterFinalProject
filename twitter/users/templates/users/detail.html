@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+ <a href ="{% url 'users:update' user.id %}"><button>Editar Usuario</button></a>
+ <a href ="{% url 'users:delete' user.id %}"><button>Eliminar Usuario</button></a>
+<a href ="{% url 'mensajes:create' %}"><button>Crear mensajes</button></a>
+    <h1>Detalle de Usuario {{user.first_name}}</h1>
+    
+    
+    <h3> {{user.first_name}} {{user.last_name}} <h3>
+    <p>Nombre: {{user.first_name}}</p>
+    <p>Apellido: {{user.last_name}} </p>
+
+    {% if user.profile.image %}
+    <img src="{{ user.profile.image.url}}" alt="Imagen del Usuario" with="50" height="50" >
+
+   {% else %}
+<img src="https://cdnlrv.lavoz.com.ar/img/user/default.jpg" alt="Imagen del Usuario" with="50" height="50" >
+{% endif %}
+
+
+    <p>Edad: <b>{{  user.profile.age  }}</b></p>
+ 
+
+   
+    {% for mensaje in mensajes %}
+
+     <a href="{% url 'mensajes:detail' mensaje.id %}"><h2>{{  mensaje.title}}</h2></a>
+    <p>{{ mensaje.mensaje}}</p>
+    <a href="{% url 'users:detail' mensaje.user.id %}"><h4> by {{ mensaje.user.first_name}} {{ mensaje.user.last_name}}</h4></a>
+
+    <p>{{mensaje.created}}</p>
+    {% endfor %}
+  
+
+{% endblock content%}

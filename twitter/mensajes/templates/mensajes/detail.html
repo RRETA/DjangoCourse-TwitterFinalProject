@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+    <h1>{{mensaje.title}}</h1>
+    <ul>
+    <p>{{mensaje.mensaje}}</p>
+
+<a href="{% url 'users:detail' mensaje.user.id %}">by {{mensaje.user.first_name}} {{mensaje.user.last_name}}</a>
+<p> {{mensaje.created}}</p>
+   
+     <a href ="{% url 'mensajes:update' mensaje.id %}"><button>Editar</button></a>
+     <a href ="{% url 'mensajes:delete' mensaje.id %}"><button>Eliminar</button></a>  
+    </ul>
+
+{% endblock content%}

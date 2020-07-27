@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter App</title>
+</head>
+<body>
+
+
+<a href="{% url 'mensajes:list' %}"><span>Inicio</span></a>
+<a href="{% url 'users:list' %}"><span>Lista Usuarios</span></a>
+<a href="{% url 'users:create' %}"><span>Crear Usuario</span></a>
+
+<a href="{% url 'user_logout' %}"><span>Cerrar Sesion</span></a>
+<br>
+
+   {% block content %}
+   {% endblock content%}
+
+</body>
+</html>

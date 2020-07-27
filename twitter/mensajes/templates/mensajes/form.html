@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Crear Twitt </h1>
+    <form action="
+        {% if mensaje %}
+            {% url 'mensajes:update' mensaje.id %}
+        {% else %}
+            {% url 'mensajes:create' %}
+        {% endif %}
+    " method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="
+            {% if mensaje %}
+                Guardar
+            {% else %}
+                Crear 
+            {% endif %}
+        ">
+    </form>
+{% endblock content %}

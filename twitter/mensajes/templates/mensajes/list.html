@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    <h1>Twiter</h1>
+    <ul>
+    {% for mensaje in mensajes %}
+
+     <a href="{% url 'mensajes:detail' mensaje.id %}"><h2>{{  mensaje.title}}</h2></a>
+    <p>{{ mensaje.mensaje}}</p>
+    <a href="{% url 'users:detail' mensaje.user.id %}"><h4> by {{ mensaje.user.first_name}} {{ mensaje.user.last_name}}</h4></a>
+
+    <p>{{mensaje.created}}</p>
+    {% endfor %}
+    </ul>
+    
+
+{% endblock content %}
